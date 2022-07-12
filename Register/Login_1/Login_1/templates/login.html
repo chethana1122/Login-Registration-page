@@ -1,0 +1,60 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login form</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+</head>
+<body>  
+ <div class="container">
+  	   <div class="card">
+  	   	<div class="inner-box" id="card">
+<!--card-front-->  	   		
+  	   		<div class="card-front">
+  	   			<h2>LOGIN</h2>
+  	   			<form method="post">
+					{% csrf_token %}
+  	   				<input type="text" class="input-box" placeholder="Your username" name='username' required>
+   	   				<input type="password" class="input-box" placeholder="Password" name="password" required>
+  	   				<button type="submit" class="submit-btn">Submit</button>
+  	   				<input type="checkbox"><span>Remember Me</span>
+  	   			</form>
+  	   			<button type="button" class="btn" onclick="openRegister()">I'm New Here</button>
+  	   			<a href="">Forgot Password</a>
+  	   		</div>
+ <!--card back--> 	   		
+  	   		<div class="card-back">
+  	   			<h2>REGISTER</h2>
+  	   			<form method="post" action="/register/">
+					{% csrf_token %}
+  	   				<input type="text" class="input-box" placeholder="Your Name" name="username" required>
+   	   				<input type="contact-number" class="input-box" placeholder="Contact Number" name="contact" required>
+              <input type="email" class="input-box" placeholder="Your Email Id" name="email" required>
+              <input type="password" class="input-box" placeholder="Password" name="password" required>
+              
+  	   				<button type="submit" class="submit-btn">Submit</button>
+  	   				<input type="checkbox"><span>Remember Me</span>
+  	   			</form>
+  	   			
+  	   		</div>
+  	   	</div>
+
+  	   </div>
+
+  </div>
+   <script >
+   	var card = document.getElementById("card")
+   	function openRegister(){
+
+   		card.style.transform ="rotateY(-180deg)"
+   	}
+   		function openLogin(){
+
+   		   card.style.transform ="rotateY(0deg)"
+   	}
+
+   </script>
+   
+</body>
+</html>
